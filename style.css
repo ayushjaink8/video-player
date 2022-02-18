@@ -83,6 +83,7 @@
     position: absolute;
     right: 0px;
     top: 0px;
+    text-transform: uppercase;
   }
   .time-info {
     padding: 4px;
@@ -93,6 +94,7 @@
   }
   
   #controls {
+    animation: fadeIn ease 1s;
     position: absolute;
     width: 70%;
     max-width: 1200px;
@@ -227,4 +229,49 @@
     font-weight: 500;
     display: grid;
     place-items: center;
+  }
+  
+  @keyframes fadeIn{
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-o-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
   }
