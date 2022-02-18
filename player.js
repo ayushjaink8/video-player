@@ -27,7 +27,7 @@ const seekStepInput = document.getElementById("seekStep"),
 var settings = {
   seekStep: 5,
   seekLongStep: 30,
-  volumeStep: 10,
+  volumeStep: 1,
   speedStep: 0.25,
   timeFormatHour12: !0,
   timeFormatSecond: !1,
@@ -367,7 +367,8 @@ class Controls {
         ? a.ctrlKey ||
           a.altKey ||
           a.metaKey ||
-          (70 === b
+          (
+            70 === b
             ? (a.preventDefault(), WindowManager.toggleFullscreen())
             : 87 === b
             ? (a.preventDefault(), WindowManager.toggleMaxSize())
@@ -390,18 +391,13 @@ class Controls {
             : 40 === b
             ? (a.preventDefault(), Player.volume(!1, settings.volumeStep))
             : "Equal" === c
-            ? (a.preventDefault(),
-              a.shiftKey
-                ? WindowManager.scale(!0)
-                : Player.speed(!0, settings.speedStep))
+            ? (a.preventDefault(), WindowManager.scale(!0))
             : "Minus" === c
-            ? (a.preventDefault(),
-              a.shiftKey
-                ? WindowManager.scale(!1)
-                : Player.speed(!1, settings.speedStep))
-            : "Digit0" === c
-            ? (a.preventDefault(),
-              a.shiftKey ? WindowManager.scaleSize(1) : Player.resetSpeed())
+            ? (a.preventDefault(), WindowManager.scale(!1))
+
+
+            : "Digit0" === c && a.shiftKey
+            ? (a.preventDefault(), WindowManager.scaleSize(1))
             : 67 === b
             ? a.preventDefault()
             : 78 === b
@@ -412,9 +408,17 @@ class Controls {
             ? (a.preventDefault(),
               a.shiftKey ? WindowManager.togglePip() : Player.playPrevious())
             : 188 === b
-            ? (a.preventDefault(), Player.seek(!1, 0.042))
+            ? (a.preventDefault(),
+              a.shiftKey 
+                ? Player.speed(!1, settings.speedStep)
+                : Player.seek(!1, 0.042))
             : 190 === b
-            ? (a.preventDefault(), Player.seek(!0, 0.042))
+            ? (a.preventDefault(), 
+                a.shiftKey
+                  ? Player.speed(!0, settings.speedStep)
+                  : Player.seek(!0, 0.042))
+            : 191 === b && a.shiftKey
+            ? (a.preventDefault(), Player.resetSpeed())
             : 83 === b && a.shiftKey
             ? (a.preventDefault(), Utils.screenshot())
             : 71 === b
