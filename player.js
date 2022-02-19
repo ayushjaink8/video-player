@@ -243,9 +243,8 @@ class Controls {
       ));
     document.body.addEventListener("contextmenu", (a) => a.preventDefault());
     Controls.hidden = !0;
-    document
-      .getElementById("settings")
-      .addEventListener("mousemove", Controls.onMouseMove);
+    document.getElementById("settings").addEventListener(
+      "mousemove", Controls.onMouseMove);
     controlsPanel.addEventListener("mousemove", Controls.onMouseMove);
     playerPanel.addEventListener("mousemove", Controls.onMouseMove);
   }
@@ -333,11 +332,11 @@ class Controls {
     Controls.hidden && Controls.show();
     clearTimeout(mouseMoveTimer);
     a = a.currentTarget.id;
-    let b = 1500;
+    let b = 2500;
     "player" == a
-      ? (b = 1500)
+      ? (b = 3500)
       : "controls" == a
-      ? (b = 4500)
+      ? (b = 5e3)
       : "settings" == a && (b = 2e4);
     mouseMoveTimer = setTimeout(Controls.hide, b);
   }
